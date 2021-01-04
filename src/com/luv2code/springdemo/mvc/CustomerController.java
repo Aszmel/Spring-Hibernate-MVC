@@ -1,5 +1,4 @@
 package com.luv2code.springdemo.mvc;
-
 import javax.validation.Valid;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Component;
@@ -14,18 +13,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/customer")
 public class CustomerController {
 	
+	//start before others, cut spaces prefixed and tailing
 	@InitBinder
 	public void InitBinder(WebDataBinder dataBinder) {
 		StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
 		dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
 	}
-	
 	@RequestMapping("showForm")
 	public String showForm(Model theModel) {
 		theModel.addAttribute("customer", new Customer());
 		 return "customer-form";
 	}
-	
 	@RequestMapping("/processForm")
 	public String processForm(
 			@Valid @ModelAttribute("customer") Customer theCustomer,
@@ -35,6 +33,5 @@ public class CustomerController {
 		} else {
 			return "customer-confirmation";	
 		}
-		
 	}
 }

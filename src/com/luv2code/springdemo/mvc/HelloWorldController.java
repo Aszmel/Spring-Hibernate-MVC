@@ -1,5 +1,4 @@
 package com.luv2code.springdemo.mvc;
-
 //import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,15 +8,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/hello")
 public class HelloWorldController {
-
-	//need a controller to show the initial HTML form	
+	//need a controller to show the initial HTML form
 	@RequestMapping("/showForm")
 	public String showForm() {
 		return "helloworld-form";
 	}
 	
-	//need a controller to show the HTML form
-	
+//need a controller to show the HTML form
 //	@RequestMapping("/processForm")
 //	public String processForm() {
 //		return "hello-world";
@@ -37,12 +34,11 @@ public class HelloWorldController {
 //		String result = "Welcome " + theName + " !";
 //		//add message to the model
 //		model.addAttribute("message", result);
-//		
 //		return "hello-world";
 //	}
 	
-	//other method of getting data from form using RequestParam(paramName in form)
-	
+	//other method of getting data from form using RequestParam
+	// (paramName in form)
 	@RequestMapping("/processForm2")
 	public String letsShoutDude(@RequestParam("studentName") String theName, Model model) {
 		//read the request from the HTML form
@@ -51,9 +47,6 @@ public class HelloWorldController {
 		String result = "Welcome " + theName + " !";
 		//add message to the model
 		model.addAttribute("message", result);
-		
 		return "hello-world";
 	}
-	
-	
 }
